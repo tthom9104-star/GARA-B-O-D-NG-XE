@@ -1,1 +1,44 @@
+1. Quản trị viên (Admin)Chức năng: Quản lý toàn diện hệ thống.
 
+Nhiệm vụ cụ thể:
+
+Quản lý tài khoản người dùng (thêm, sửa, xóa, phân quyền cho nhân viên, thợ, lễ tân).
+
+Cấu hình hệ thống (danh mục dịch vụ, định mức công chuẩn, danh mục phụ tùng).
+
+Xem toàn bộ báo cáo doanh thu, thống kê hoạt động của gara theo ngày/tháng/năm.
+
+2. Nhân viên tiếp nhận / Lễ tân (Receptionist / Service Advisor)
+Chức năng: Quản lý khách hàng, xe vào xưởng và lập báo giá.
+
+Nhiệm vụ cụ thể:
+
+Tiếp đón khách hàng, tạo hồ sơ xe mới hoặc tra cứu lịch sử theo xe (các lần bảo dưỡng trước, số km, phụ tùng đã thay).
+
+Lập phiếu tiếp nhận xe và ghi nhận yêu cầu của khách.
+
+Lập báo giá có phiên bản (ví dụ: Bản tiết kiệm, bản tiêu chuẩn, bản cao cấp) để khách hàng xem xét và lựa chọn trước khi sửa chữa.
+
+Bàn giao xe và thanh toán khi hoàn tất.
+
+3. Thợ kỹ thuật / Kỹ thuật viên (Technician)
+Chức năng: Thực hiện bảo dưỡng, sửa chữa và cập nhật tiến độ công việc.
+
+Nhiệm vụ cụ thể:
+
+Nhận phân công công việc từ quản lý hoặc lễ tân.
+
+Tra cứu thông tin xe, lịch sử sửa chữa để biết tình trạng xe.
+
+Cập nhật các hạng mục đã làm, phát sinh lỗi mới (nếu có) và định mức thời gian/công thực tế lên hệ thống.
+
+4. Khách hàng (Customer) - Tùy chọn
+Chức năng: Theo dõi tình trạng xe của mình.
+
+Nhiệm vụ cụ thể:
+
+Xem lịch sử bảo dưỡng, sửa chữa của xe cá nhân.
+
+Xem trước và duyệt phiếu báo giá do gara gửi tới.
+
+Nhận thông báo lịch bảo dưỡng định kỳ.
