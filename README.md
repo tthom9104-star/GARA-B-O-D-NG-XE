@@ -6,7 +6,7 @@ Gara bảo dưỡng xe
 
 Trần Đại Vĩ - 2506012001
 
-Lê Phạm Thành Thơm - 2506022004
+Lê Phạm Thành Thơm - 2506022005
 
 Trịnh Quốc Đạt - 2506012702
 
