@@ -6,9 +6,9 @@ Gara bảo dưỡng xe
 
 Trần Đại Vĩ - 2506012001
 
-Lê Phạm Thành Thơm - 2506022005
+Lê Phạm Thành Thơm - 2506022004
 
-Trịnh Quốc Đạt - 2506012702
+Trịnh Quốc Đạt - 2506022005
 
 3. Cần Làm Gì?
 Quản lý Tiếp nhận xe (Reception)
