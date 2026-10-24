@@ -85,8 +85,9 @@ function assign(id) {
   ev(o, 'Giao việc cho ' + UN(o.tech)); notify(o.tech, `Bạn được giao xe ${V(o.vid).plate} (${o.req})`); logA(`Giao việc ${o.no} cho ${UN(o.tech)}`); save(); toast('Đã giao việc'); R();
 }
 function pay(id) {
-  const o = O(id), v = V(o.vid); o.status = 'paid'; o.pay = $('#pm').value; o.paidAt = iso(); v.km = Math.max(v.km, o.km); v.nextKm = o.km + 5000; v.nextDate = iso(180);
-  o.quotes[o.chosen].items.filter(i => i.t == 'p').forEach(i => { const p = D.parts.find(x => x.id == i.id); if (p) p.stock = Math.max(0, p.stock - i.qty); });
+  const o = O(id), v = V(o.vid), low = []; o.status = 'paid'; o.pay = $('#pm').value; o.paidAt = iso(); v.km = Math.max(v.km, o.km); v.nextKm = o.km + 5000; v.nextDate = iso(180);
+  o.quotes[o.chosen].items.filter(i => i.t == 'p').forEach(i => { const p = D.parts.find(x => x.id == i.id); if (p) { p.stock = Math.max(0, p.stock - i.qty); if (p.stock <= p.min) low.push(p.name + ' (còn ' + p.stock + ')'); } });
+  if (low.length) notify('role:admin', 'Phụ tùng sắp hết sau khi xuất kho: ' + low.join(', ') + '. Cần nhập thêm.');
   ev(o, `Bàn giao xe và thanh toán ${fm(tot(o))} (${o.pay})`); notifyCus(o, `Cảm ơn quý khách! Xe ${v.plate} đã được bàn giao. Lịch bảo dưỡng tiếp theo: ${dmy(v.nextDate)}.`); logA(`Thanh toán ${o.no}: ${fm(tot(o))}`); save(); toast('Đã bàn giao xe và thanh toán'); R();
 }
 

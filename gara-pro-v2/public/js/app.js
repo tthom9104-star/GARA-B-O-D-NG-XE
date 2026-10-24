@@ -1,7 +1,7 @@
 /* ===== KHUNG ỨNG DỤNG: đăng nhập, menu theo vai trò, thông báo, giao diện sáng/tối =====
    File này nạp sau các file vai trò; chỉ api.js được nạp sau nó */
 const NAV = {
-  admin: [['dash', 'grid', 'Tổng quan'], ['users', 'users', 'Tài khoản'], ['catalog', 'box', 'Danh mục & kho'], ['report', 'chart', 'Báo cáo'], ['logs', 'history', 'Nhật ký'], ['settings', 'sliders', 'Cài đặt']],
+  admin: [['dash', 'grid', 'Tổng quan'], ['users', 'users', 'Nhân viên & tài khoản'], ['catalog', 'box', 'Danh mục & kho'], ['report', 'chart', 'Báo cáo'], ['logs', 'history', 'Nhật ký'], ['settings', 'sliders', 'Cài đặt']],
   rec: [['dash', 'grid', 'Tổng quan'], ['vehicles', 'car', 'Xe & khách'], ['orders', 'clipboard', 'Phiếu tiếp nhận'], ['appts', 'calendar', 'Lịch hẹn']],
   tech: [['dash', 'wrench', 'Việc của tôi'], ['lookup', 'car', 'Tra cứu xe']],
   cus: [['dash', 'grid', 'Trang chủ'], ['cvehicles', 'car', 'Xe của tôi'], ['book', 'calendar', 'Đặt lịch'], ['invoices', 'dollar', 'Hóa đơn']]
@@ -15,7 +15,7 @@ const VIEWS = {
 const mineN = () => D.notifs.filter(n => n.to == me.id || n.to == 'role:' + me.role);
 
 function loginHTML() {
-  const demo = [['admin', 'admin', 'Quản trị viên'], ['letan', '123', 'Lễ tân'], ['tho', '123', 'Thợ kỹ thuật'], ['khach', '123', 'Khách hàng']];
+  const demo = [['admin', 'admin', 'Quản lý (Admin)'], ['letan', '123', 'Lễ tân'], ['tho', '123', 'Thợ kỹ thuật'], ['khach', '123', 'Khách hàng']];
   return `<div class="login"><section class="hero"><div class="brand"><div class="logo">${ic('wrench', 20)}</div>Gara Pro</div>
   <div><h2>Mỗi chiếc xe một hồ sơ rõ ràng.</h2><p>Quản lý tiếp nhận, báo giá, sửa chữa và thanh toán trên một hệ thống. Dùng được trên máy tính lẫn điện thoại.</p>
   <ul><li>${ic('check')}Báo giá 3 phiên bản để khách chọn trước khi sửa</li><li>${ic('check')}Thợ bấm giờ công và báo lỗi phát sinh ngay tại xe</li><li>${ic('check')}Khách theo dõi tiến độ và nhận nhắc bảo dưỡng định kỳ</li></ul></div><div class="mut xs" style="color:#6b7686">Gara Pro v2</div></section>
@@ -42,7 +42,7 @@ function R(f) {
   let body; try { body = VIEWS[me.role][S.view](); } catch (e) { console.error(e); body = `<div class="card"><h3>Không hiển thị được màn hình này</h3><p class="mut">${esc(e.message)}</p></div>`; }
   const un = mineN().filter(n => !n.seen.includes(me.id)).length, dark = document.documentElement.dataset.theme == 'dark', cur = nav.find(n => n[0] == S.view);
   const pops = S.pop == 'bell' ? `<div class="bd" onclick="pop('bell')"></div><div class="pop"><div class="pi"><b>Thông báo</b></div>${mineN().slice(0, 12).map(n => `<div class="pi">${esc(n.txt)}<small>${hm(n.t)}</small></div>`).join('') || '<div class="pi mut">Chưa có thông báo</div>'}</div>`
-    : S.pop == 'menu' ? `<div class="bd" onclick="pop('menu')"></div><div class="pop" style="width:240px"><div class="pi"><b>${esc(me.name)}</b><small>${ROLE[me.role]}</small></div><button class="pm" onclick="profile()">${ic('edit', 16)} Thông tin tài khoản</button><button class="pm" onclick="toggleTheme()">${ic(dark ? 'sun' : 'moon', 16)} Giao diện ${dark ? 'sáng' : 'tối'}</button><button class="pm" onclick="logout()">${ic('logout', 16)} Đăng xuất</button></div>` : '';
+    : S.pop == 'menu' ? `<div class="bd" onclick="pop('menu')"></div><div class="pop" style="width:240px"><div class="pi"><b>${esc(me.name)}</b><small>${ROLE[me.role]}</small></div><button class="pm" onclick="roleGuide()">${ic('users', 16)} Vai trò & quyền hạn</button><button class="pm" onclick="profile()">${ic('edit', 16)} Thông tin tài khoản</button><button class="pm" onclick="toggleTheme()">${ic(dark ? 'sun' : 'moon', 16)} Giao diện ${dark ? 'sáng' : 'tối'}</button><button class="pm" onclick="logout()">${ic('logout', 16)} Đăng xuất</button></div>` : '';
   app.innerHTML = `<div class="shell"><aside class="side"><div class="brand"><div class="logo">${ic('wrench', 20)}</div>Gara Pro</div><nav class="nav">${nav.map(n => `<a class="${S.view == n[0] ? 'on' : ''}" onclick="go('${n[0]}')" role="button" tabindex="0">${ic(n[1], 19)}<span>${n[2]}</span></a>`).join('')}</nav>
   <div class="me"><div class="avatar">${esc(me.name.trim().split(' ').pop()[0] || '?')}</div><div><div>${esc(me.name)}</div><div style="color:#8f9aab">${ROLE[me.role]}</div></div></div></aside>
   <div class="main"><header class="top"><span class="t">${cur ? cur[2] : ''}</span><span class="d">${new Date().toLocaleDateString('vi-VN', { weekday: 'long', day: '2-digit', month: '2-digit', year: 'numeric' })}</span><span class="grow"></span>

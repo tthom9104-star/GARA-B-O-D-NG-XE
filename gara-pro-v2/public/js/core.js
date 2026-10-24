@@ -41,7 +41,13 @@ const IC = {
 const ic = (n, s = 18) => `<svg width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${IC[n] || ''}</svg>`;
 
 /* ---------- Hằng số ---------- */
-const ROLE = { admin: 'Quản trị viên', rec: 'Lễ tân', tech: 'Thợ kỹ thuật', cus: 'Khách hàng' };
+const ROLE = { admin: 'Quản lý (Admin)', rec: 'Lễ tân', tech: 'Thợ kỹ thuật', cus: 'Khách hàng' };
+const ROLE_INFO = {
+  admin: { sum: 'Quản lý nhân viên và điều hành toàn bộ hệ thống gara.', do: ['Thêm, sửa, xóa, đặt lại mật khẩu và phân quyền tài khoản (lễ tân, thợ, khách)', 'Cấu hình danh mục dịch vụ, định mức công chuẩn, danh mục phụ tùng, nhập kho', 'Xem báo cáo doanh thu theo ngày / tháng / năm, hiệu suất thợ, xuất CSV', 'Xem nhật ký hoạt động, cài đặt thông tin gara và VAT, sao lưu dữ liệu', 'Nhận cảnh báo khi phụ tùng sắp hết'], no: 'Không tự đổi vai trò hoặc xóa chính mình; luôn phải còn ít nhất một quản lý.' },
+  rec: { sum: 'Tiếp đón khách, lập phiếu, báo giá và thu tiền.', do: ['Tạo hồ sơ xe, tra cứu lịch sử bảo dưỡng; tự tạo tài khoản cho khách mới', 'Lập phiếu tiếp nhận và ghi yêu cầu của khách', 'Soạn báo giá 3 phiên bản (Tiết kiệm, Tiêu chuẩn, Cao cấp), giảm giá, VAT, gửi khách duyệt', 'Xác nhận lịch hẹn, giao việc cho thợ', 'Bàn giao xe, thanh toán, in báo giá / hóa đơn (tự trừ kho)'], no: 'Không sửa danh mục dịch vụ, giá phụ tùng hay tài khoản nhân viên.' },
+  tech: { sum: 'Thực hiện bảo dưỡng, sửa chữa và cập nhật tiến độ.', do: ['Nhận xe được giao, xem thông tin xe và lịch sử sửa chữa', 'Bấm giờ công từng hạng mục, tick hoàn thành, nhập giờ thủ công', 'Thêm hạng mục phát sinh và báo lỗi mới phát hiện cho lễ tân', 'Báo hoàn tất để chuyển sang thanh toán'], no: 'Chỉ sửa được phiếu đang giao cho mình; không thấy giá thanh toán và báo cáo.' },
+  cus: { sum: 'Theo dõi xe của mình và duyệt báo giá.', do: ['Xem lịch sử bảo dưỡng, sửa chữa của xe cá nhân', 'So sánh và duyệt báo giá, hoặc yêu cầu gara chỉnh sửa', 'Đặt hoặc hủy lịch hẹn, xem tiến độ sửa xe', 'Xem và in hóa đơn, nhận nhắc bảo dưỡng định kỳ'], no: 'Chỉ thấy dữ liệu của xe gắn với số điện thoại của mình.' }
+};
 const ST = { received: ['Đã tiếp nhận', ''], quoted: ['Chờ khách duyệt', 'warn'], approved: ['Chờ giao việc', 'violet'], working: ['Đang sửa chữa', 'blue'], done: ['Chờ thanh toán', 'orange'], paid: ['Đã thanh toán', 'ok'] };
 const STEPS = ['received', 'quoted', 'approved', 'working', 'done', 'paid'];
 const QN = ['Tiết kiệm', 'Tiêu chuẩn', 'Cao cấp'];

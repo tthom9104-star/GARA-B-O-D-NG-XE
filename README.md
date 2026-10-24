@@ -29,7 +29,7 @@
 | Quản lý Hệ thống (Quản trị & Báo cáo) | Vĩ | Hoàn thành |
 | Máy chủ + cơ sở dữ liệu dùng chung nhiều máy | Vĩ | Hoàn thành |
 
-## 4. Vai trò người dùng
+## 4. Vai trò người dùng (chi tiết: `VAI-TRO.md`)
 
 Quản trị viên, Lễ tân, Thợ kỹ thuật, Khách hàng (mô tả trong file `user roles`, sơ đồ trong file `.png`).
 

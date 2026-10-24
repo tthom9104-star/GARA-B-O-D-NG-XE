@@ -47,3 +47,9 @@ function docHTML(o, kind, qi) {
   <div class="sig"><div><b>Khách hàng</b><br>(Ký, ghi rõ họ tên)</div><div><b>Nhân viên gara</b><br>(Ký, ghi rõ họ tên)</div></div></div>`;
 }
 const printO = (id, kind, qi) => printDoc(docHTML(O(id), kind, qi));
+
+/* Ghi chú vai trò: hiện nhiệm vụ và giới hạn của tài khoản đang đăng nhập (mở từ menu tài khoản) */
+function roleGuide() {
+  S.pop = null; R(); const r = ROLE_INFO[me.role];
+  modal(`<div class="mh"><h3>Vai trò: ${ROLE[me.role]}</h3><button class="icon" onclick="this.closest('.ov').remove()" aria-label="Đóng">${ic('x')}</button></div><div class="mb"><p class="mut">${r.sum}</p><h3 style="margin:14px 0 8px">Nhiệm vụ</h3>${r.do.map(t => `<div class="li" style="cursor:default">${ic('check', 16)}<span style="flex:1;margin-left:8px">${t}</span></div>`).join('')}<div class="alert mt">${ic('alert')}<div><b>Giới hạn:</b> ${r.no}</div></div></div><div class="mf"></div>`, 1);
+}
