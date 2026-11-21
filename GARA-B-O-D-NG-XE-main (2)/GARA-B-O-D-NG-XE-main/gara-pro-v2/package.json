@@ -1,0 +1,10 @@
+{
+  "name": "gara-pro",
+  "version": "2.0.0",
+  "description": "Hệ thống quản lý gara bảo dưỡng xe",
+  "main": "server.js",
+  "scripts": { "start": "node server.js", "lan": "node server.js --lan" },
+  "engines": { "node": ">=18" },
+  "license": "UNLICENSED",
+  "private": true
+}
